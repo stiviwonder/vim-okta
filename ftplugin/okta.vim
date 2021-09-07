@@ -1,0 +1,2 @@
+
+setlocal completefunc=syntaxcomplete#Complete
