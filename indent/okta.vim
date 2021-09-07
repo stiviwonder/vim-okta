@@ -7,7 +7,7 @@ function! OktaIndent()
     let previous = getline(previousNum)
 
     if previous =~ "{" && previous !~ "}" && line !~ "}" && line !~ ":$"
-	return indent(previousNum) + &tabstop
+	return indent(previousNum) + &softtabstop
     endif
 
     ...
