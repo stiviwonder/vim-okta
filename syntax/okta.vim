@@ -12,7 +12,12 @@ endif
 
 syn keyword oktaKeywords for loop while 
 syn keyword oktaKeywords if elif else
-syn keyword oktaKeywords fun
+syn keyword oktaKeywords fun extern
+
+syn keyword oktaType i16 i32 i64 
+syn keyword oktaType u16 u32 u64 
+syn keyword oktaType f16 f32 f64 
+syn keyword oktaType bool
 " " Matches
 " syn match syntaxElementMatch 'regexp' contains=syntaxElement1
 " nextgroup=syntaxElement2 skipwhite
@@ -37,6 +42,7 @@ syntax match oktaInterpolatedString "\v\w+(\(\))?" contained containedin=oktaInt
 let b:current_syntax = "okta"
 highlight default link oktaComment Comment
 highlight default link oktaKeywords Keyword
+highlight default link oktaType Type
 highlight default link oktaString String
 highlight default link oktaInterpolatedWrapper Delimiter
 highlight default link oktaNumber Number
