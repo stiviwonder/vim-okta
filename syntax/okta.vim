@@ -12,7 +12,7 @@ endif
 
 syn keyword oktaKeywords for loop while 
 syn keyword oktaKeywords if elif else
-syn keyword oktaKeywords fun extern
+syn keyword oktaKeywords fun extern ret
 
 syn keyword oktaType i16 i32 i64 
 syn keyword oktaType u16 u32 u64 
