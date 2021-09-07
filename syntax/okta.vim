@@ -12,6 +12,7 @@ endif
 
 syn keyword oktaKeywords for loop while 
 syn keyword oktaKeywords if elif else
+syn keyword oktaKeywords fun
 " " Matches
 " syn match syntaxElementMatch 'regexp' contains=syntaxElement1
 " nextgroup=syntaxElement2 skipwhite
@@ -22,6 +23,8 @@ syn match oktaNumber "\v<0x\x+([Pp]-?)?\x+>"
 syn match oktaNumber "\v<0b[01]+>"
 syn match oktaNumber "\v<0o\o+>"
 
+syn match oktaComment "#.*$"
+
 "
 " Regions
 " syn region syntaxElementRegion start='x' end='y'
@@ -31,6 +34,8 @@ syntax region oktaInterpolatedWrapper start="\v\\\(\s*" end="\v\s*\)" contained 
 syntax match oktaInterpolatedString "\v\w+(\(\))?" contained containedin=oktaInterpolatedWrapper
 
 " Highlights
+let b:current_syntax = "okta"
+highlight default link oktaComment Comment
 highlight default link oktaKeywords Keyword
 highlight default link oktaString String
 highlight default link oktaInterpolatedWrapper Delimiter
