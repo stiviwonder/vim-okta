@@ -22,17 +22,14 @@ function! OktaIndent()
 
     if previous =~ "{" && previous !~ "}" && line !~ "}" && line !~ ":$"
 	return indent(previousNum) + &softtabstop
+    else 
+	return -1
     endif
 
     " If the previous line is blank, keep the same indentation
     if previous =~ '^\s*$'
         return -1
     endif
-
-    if line =~ "}"
-	return indent(previousNum) - &softtabstop
-    endif
-
 
 endfunction
 
