@@ -12,12 +12,13 @@ endif
 
 syn keyword oktaKeywords for loop while 
 syn keyword oktaKeywords if elif else
-syn keyword oktaKeywords fun extern ret
+syn keyword oktaKeywords fun extern ret struct
 
 syn keyword oktaType i16 i32 i64 
 syn keyword oktaType u16 u32 u64 
 syn keyword oktaType f16 f32 f64 
-syn keyword oktaType bool
+syn keyword oktaType bool 
+
 " " Matches
 " syn match syntaxElementMatch 'regexp' contains=syntaxElement1
 " nextgroup=syntaxElement2 skipwhite
