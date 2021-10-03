@@ -40,7 +40,7 @@ function! OktaIndent()
     let previousNum = prevnonblank(v:lnum - 1)
     let previous = getline(previousNum)
 
-    if line =~ "^\s*\}\>"
+    if line =~ "^\s*\{\>"
 	let blkst = s:BlockStarter(v:lnum, '^\s*\{\>')
 	if blkst > 0
 	    return indent(blkst)
@@ -49,13 +49,13 @@ function! OktaIndent()
 	endif
     endif
 
-    if previous =~ "{" && previous !~ "}" && line !~ "}" && line !~ ":$"
-	return indent(previousNum) + &softtabstop
-    endif
+    " if previous =~ "{" && previous !~ "}" && line !~ "}" && line !~ ":$"
+    "     return indent(previousNum) + &softtabstop
+    " endif
 
-    if previous =~ "}"
-	return indent(previousNum) - &softtabstop
-    endif
+    " if previous =~ "}"
+    "     return indent(previousNum) - &softtabstop
+    " endif
 
     " If the previous line is blank, keep the same indentation
     if previous =~ '^\s*$'
