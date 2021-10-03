@@ -29,10 +29,10 @@ function! OktaIndent()
         return -1
     endif
 
-    if previous =~ "}" && previous !~ "{" && line !~ "{" && line !~ ":$"
-	" return indent(previousNum) - &softtabstop
-	return indent(previousNum)
+    if line =~ "}"
+	return indent(previousNum) - &softtabstop
     endif
+
 
 endfunction
 
