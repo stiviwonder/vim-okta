@@ -31,6 +31,8 @@ syn match oktaNumber "\v<0x\x+([Pp]-?)?\x+>"
 syn match oktaNumber "\v<0b[01]+>"
 syn match oktaNumber "\v<0o\o+>"
 
+syn match oktaBuiltinFn "@\i\+"
+
 syn match oktaComment "#.*$"
 
 "
@@ -49,3 +51,4 @@ highlight default link oktaType Type
 highlight default link oktaString String
 highlight default link oktaInterpolatedWrapper Delimiter
 highlight default link oktaNumber Number
+highlight default link oktaBuiltinFn Function
