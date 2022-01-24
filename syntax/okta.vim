@@ -12,14 +12,13 @@ endif
 
 syn keyword oktaKeywords for loop while 
 syn keyword oktaKeywords if elif else
-syn keyword oktaKeywords fun type extern let const
+syn keyword oktaKeywords fun type extern let const use
 syn keyword oktaKeywords ret break 
-syn keyword oktaKeywords struct enum
 
 syn keyword oktaType i8 i16 i32 i64 
 syn keyword oktaType u8 u16 u32 u64 
 syn keyword oktaType f32 f64 
-syn keyword oktaType bool str c_voidptr
+syn keyword oktaType bool str c_voidptr struct enum
 
 " " Matches
 " syn match syntaxElementMatch 'regexp' contains=syntaxElement1
@@ -34,6 +33,8 @@ syn match oktaNumber "\v<0o\o+>"
 syn match oktaBuiltinFn "@\i\+"
 
 syn match oktaComment "#.*$"
+
+syntax match oktaOperator display "\V\[-+/*=^&?|!><%~]"
 
 "
 " Regions
@@ -52,3 +53,4 @@ highlight default link oktaString String
 highlight default link oktaInterpolatedWrapper Delimiter
 highlight default link oktaNumber Number
 highlight default link oktaBuiltinFn Function
+highlight default link oktaOperator Operator
