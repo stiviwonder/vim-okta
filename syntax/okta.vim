@@ -1,7 +1,7 @@
 " Vim syntax file
 " " Language: okta
 " " Maintainer: Asier Esteban
-" " Latest Revision: 7 September 2021
+" " Latest Revision: 24 January 2021
 "
 if exists("b:current_syntax")
   finish
@@ -12,12 +12,14 @@ endif
 
 syn keyword oktaKeywords for loop while 
 syn keyword oktaKeywords if elif else
-syn keyword oktaKeywords fun extern ret struct
+syn keyword oktaKeywords fun type extern let const
+syn keyword oktaKeywords ret break 
+syn keyword oktaKeywords struct enum
 
-syn keyword oktaType i16 i32 i64 
-syn keyword oktaType u16 u32 u64 
-syn keyword oktaType f16 f32 f64 
-syn keyword oktaType bool 
+syn keyword oktaType i8 i16 i32 i64 
+syn keyword oktaType u8 u16 u32 u64 
+syn keyword oktaType f32 f64 
+syn keyword oktaType bool str c_voidptr
 
 " " Matches
 " syn match syntaxElementMatch 'regexp' contains=syntaxElement1
