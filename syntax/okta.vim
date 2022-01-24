@@ -34,6 +34,8 @@ syn match oktaBuiltinFn "@\i\+"
 
 syn match oktaComment "#.*$"
 
+syntax match oktaOperator display "\V\[-+/*=^&?|!><%~]"
+
 "
 " Regions
 " syn region syntaxElementRegion start='x' end='y'
@@ -51,3 +53,4 @@ highlight default link oktaString String
 highlight default link oktaInterpolatedWrapper Delimiter
 highlight default link oktaNumber Number
 highlight default link oktaBuiltinFn Function
+highlight default link oktaOperator Operator
