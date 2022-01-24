@@ -12,7 +12,7 @@ endif
 
 syn keyword oktaKeywords for loop while 
 syn keyword oktaKeywords if elif else
-syn keyword oktaKeywords fun type extern let const
+syn keyword oktaKeywords fun type extern let const use
 syn keyword oktaKeywords ret break 
 
 syn keyword oktaType i8 i16 i32 i64 
