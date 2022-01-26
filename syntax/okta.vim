@@ -14,6 +14,7 @@ syn keyword oktaKeywords for loop while
 syn keyword oktaKeywords if elif else
 syn keyword oktaKeywords fun type extern let const use
 syn keyword oktaKeywords ret break 
+syn keyword oktaKeywords pub
 
 syn keyword oktaType i8 i16 i32 i64 
 syn keyword oktaType u8 u16 u32 u64 
@@ -29,6 +30,8 @@ syn match oktaNumber "\v<\d*\.?\d+([Ee]-?)?\d+>"
 syn match oktaNumber "\v<0x\x+([Pp]-?)?\x+>"
 syn match oktaNumber "\v<0b[01]+>"
 syn match oktaNumber "\v<0o\o+>"
+syn match oktaNumber "true"
+syn match oktaNumber "false"
 
 syn match oktaBuiltinFn "@\i\+"
 
