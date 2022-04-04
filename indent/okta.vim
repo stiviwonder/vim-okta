@@ -26,8 +26,26 @@ function! OktaIndent()
         return indent(previousNum) + &softtabstop
     endif
 
-    if previous =~ "}"
+    " for lines that look like
+    "   },
+    "   };
+    " try treating them the same as a }
+    if previous =~ '\v^\s*},$'
+        if line =~ '\v^\s*};$' || line =~ '\v^\s*}$'
+            return indent(previousNum) - &softtabstop
+        endif
+        return indent(previousNum-1) - &softtabstop
+    endif
+    if line =~ '\v^\s*},$'
         return indent(previousNum) - &softtabstop
+    endif
+    if line =~ '\v^\s*};$'
+        return indent(previousNum) - &softtabstop
+    endif
+
+    " If the previous line is blank, keep the same indentation
+    if previous =~ '^\s*$'
+        return -1
     endif
 
 "   If the previous line is inside parenthesis, use the indent of the starting
@@ -48,10 +66,6 @@ function! OktaIndent()
 "         let previousNumstart = previousNum
 "     endif
 " 
-"     " If the previous line is blank, keep the same indentation
-"     if previous =~ '^\s*$'
-"         return -1
-"     endif
 
 endfunction
 
