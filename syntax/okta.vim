@@ -67,6 +67,7 @@ highlight default link oktaType Type
 highlight default link oktaString String
 highlight default link oktaInterpolatedWrapper Delimiter
 highlight default link oktaMultilineString String
+highlight default link oktaMultilineContent String
 highlight default link oktaMultilineStringDelimiter Delimiter
 highlight default link oktaNumber Number
 highlight default link oktaChar Character
