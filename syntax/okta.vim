@@ -15,7 +15,7 @@ syn keyword oktaKeywords if elif else
 syn keyword oktaKeywords fun type extern let const use
 syn keyword oktaKeywords ret break 
 syn keyword oktaKeywords pub
-syn keyword oktaKeywords macro derive
+syn keyword oktaKeywords macro 
 
 syn keyword oktaType i8 i16 i32 i64 
 syn keyword oktaType u8 u16 u32 u64 
@@ -45,7 +45,7 @@ syn match oktaNotes contained "\<\(TODO\|FIXME\|NOTE\):"
 
 syntax match oktaOperator display "\V\[-+/*=^&?|!><%~]"
 
-syntax match oktaMultilineStringPrefix /c\?\\\\/ contained containedin=oktaMultilineString
+" syntax match oktaMultilineStringPrefix /c\?"""/ contained containedin=oktaMultilineString
 
 "
 " Regions
@@ -53,10 +53,13 @@ syntax match oktaMultilineStringPrefix /c\?\\\\/ contained containedin=oktaMulti
 " Match strings
 syntax region oktaString start=/"/ skip=/\\"/ end=/"/ oneline contains=oktaInterpolatedWrapper
 
-syntax region oktaMultilineString matchgroup=oktaMultilineStringDelimiter start="c\?\\\\" end="$" contains=oktaMultilineStringPrefix display
+syntax region oktaMultilineString start=/"""/ end=/"""/ contains=oktaInterpolatedMultiWrapper display
 
 syntax region oktaInterpolatedWrapper start="\v\\\(\s*" end="\v\s*\)" contained containedin=oktaString contains=oktaInterpolatedString
 syntax match oktaInterpolatedString "\v\w+(\(\))?" contained containedin=oktaInterpolatedWrapper
+
+syntax region oktaInterpolatedMultiWrapper start="\v\\\(\s*" end="\v\s*\)" contained containedin=oktaMultilineString contains=oktaInterpolatedMultiString
+syntax match oktaInterpolatedMultiString "\v\w+(\(\))?" contained containedin=oktaInterpolatedMultiWrapper
 
 " Highlights
 let b:current_syntax = "okta"
@@ -65,10 +68,9 @@ highlight default link oktaNotes Todo
 highlight default link oktaKeywords Keyword
 highlight default link oktaType Type
 highlight default link oktaString String
-highlight default link oktaInterpolatedWrapper Delimiter
 highlight default link oktaMultilineString String
-highlight default link oktaMultilineContent String
-highlight default link oktaMultilineStringDelimiter Delimiter
+highlight default link oktaInterpolatedWrapper Delimiter
+highlight default link oktaInterpolatedMultiWrapper Delimiter
 highlight default link oktaNumber Number
 highlight default link oktaChar Character
 highlight default link oktaBuiltinFn Function
