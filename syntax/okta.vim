@@ -39,7 +39,7 @@ syn match oktaBuiltinFn "@\i\+"
 " syn match oktaFunction ".\i\(*)"
 
 syn match oktaComment "#.*$"
-syn match oktaNotes contained "\<\(TODO\|FIXME\|NOTE\):"
+syn match oktaNotes contained "\#\(TODO\|FIXME\|NOTE\):"
 
 syntax match oktaOperator display "\V\[-+/*=^&?|!><%~]"
 
@@ -49,6 +49,7 @@ syntax match oktaOperator display "\V\[-+/*=^&?|!><%~]"
 " Match strings
 syntax region oktaRawString start=/"""/ skip=/\\"/ end=/"""/ oneline contains=oktaInterpolatedWrapper
 syntax region oktaString start=/"/ skip=/\\"/ end=/"/ oneline contains=oktaInterpolatedWrapper
+
 syntax region oktaInterpolatedWrapper start="\v\\\(\s*" end="\v\s*\)" contained containedin=oktaString contains=oktaInterpolatedString
 syntax match oktaInterpolatedString "\v\w+(\(\))?" contained containedin=oktaInterpolatedWrapper
 
