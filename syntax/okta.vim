@@ -34,21 +34,26 @@ syn match oktaNumber "\v<0o\o+>"
 syn match oktaNumber "true"
 syn match oktaNumber "false"
 
+syn match oktaChar "'.'"
+
 syn match oktaBuiltinFn "@\i\+"
 " NOTE: for future work
 " syn match oktaFunction ".\i\(*)"
 
-syn match oktaComment "#.*$"
-syn match oktaNotes contained "\#\(TODO\|FIXME\|NOTE\):"
+syn match oktaComment "#.*$" contains=oktaNotes
+syn match oktaNotes contained "\<\(TODO\|FIXME\|NOTE\):"
 
 syntax match oktaOperator display "\V\[-+/*=^&?|!><%~]"
+
+syntax match oktaMultilineStringPrefix /c\?\\\\/ contained containedin=oktaMultilineString
 
 "
 " Regions
 " syn region syntaxElementRegion start='x' end='y'
 " Match strings
-syntax region oktaRawString start=/"""/ skip=/\\"/ end=/"""/ oneline contains=oktaInterpolatedWrapper
 syntax region oktaString start=/"/ skip=/\\"/ end=/"/ oneline contains=oktaInterpolatedWrapper
+
+syntax region oktaMultilineString matchgroup=oktaMultilineStringDelimiter start="c\?\\\\" end="$" contains=oktaMultilineStringPrefix display
 
 syntax region oktaInterpolatedWrapper start="\v\\\(\s*" end="\v\s*\)" contained containedin=oktaString contains=oktaInterpolatedString
 syntax match oktaInterpolatedString "\v\w+(\(\))?" contained containedin=oktaInterpolatedWrapper
@@ -59,9 +64,11 @@ highlight default link oktaComment Comment
 highlight default link oktaNotes Todo
 highlight default link oktaKeywords Keyword
 highlight default link oktaType Type
-highlight default link oktaRawString String
 highlight default link oktaString String
 highlight default link oktaInterpolatedWrapper Delimiter
+highlight default link oktaMultilineString String
+highlight default link oktaMultilineStringDelimiter Delimiter
 highlight default link oktaNumber Number
+highlight default link oktaChar Character
 highlight default link oktaBuiltinFn Function
 highlight default link oktaOperator Operator
