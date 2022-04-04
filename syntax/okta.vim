@@ -15,6 +15,7 @@ syn keyword oktaKeywords if elif else
 syn keyword oktaKeywords fun type extern let const use
 syn keyword oktaKeywords ret break 
 syn keyword oktaKeywords pub
+syn keyword oktaKeywords macro derive
 
 syn keyword oktaType i8 i16 i32 i64 
 syn keyword oktaType u8 u16 u32 u64 
@@ -34,8 +35,11 @@ syn match oktaNumber "true"
 syn match oktaNumber "false"
 
 syn match oktaBuiltinFn "@\i\+"
+" NOTE: for future work
+" syn match oktaFunction ".\i\(*)"
 
 syn match oktaComment "#.*$"
+syn match oktaNotes   "\<\(TODO\|FIXME\|NOTE\):"
 
 syntax match oktaOperator display "\V\[-+/*=^&?|!><%~]"
 
@@ -50,6 +54,7 @@ syntax match oktaInterpolatedString "\v\w+(\(\))?" contained containedin=oktaInt
 " Highlights
 let b:current_syntax = "okta"
 highlight default link oktaComment Comment
+highlight default link oktaNotes Todo
 highlight default link oktaKeywords Keyword
 highlight default link oktaType Type
 highlight default link oktaString String
